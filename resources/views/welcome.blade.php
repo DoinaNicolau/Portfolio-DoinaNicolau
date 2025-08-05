@@ -18,7 +18,7 @@
                 <div class="about-image">
                     {{-- Inserisci qui un'immagine di te.
                          Per ora usiamo un placeholder da un servizio online --}}
-                    <img src="https://i.pravatar.cc/300" alt="Foto di [Il Tuo Nome]">
+                    <img src="\media\foto cv.jpg" alt="Foto di [Il Tuo Nome]">
                 </div>
                 <div class="about-text">
                     <p>
@@ -34,11 +34,25 @@
                      <hr class="modal-divider"> {{-- Aggiungiamo un divisore --}}
 
                         {{-- NUOVO FORM PER INVIARE VIA EMAIL --}}
+                      
+                        @if(session('success_cv'))
+                            <div class="alert-success">{{ session('success_cv') }}</div>
+                        @endif
+
+                        @if(session('error_cv'))
+                            <div class="alert-danger">{{ session('error_cv') }}</div>
+                        @endif
+                                                @if($errors->any())
+                            <div class="alert-danger" style="margin-top: 15px;">
+                                C'è stato un errore. Assicurati di inserire un'email valida.
+                            </div>
+                        @endif
+
                         <form action="{{ route('cv.send') }}" method="POST" class="send-cv-form">
                             @csrf
-                            <label for="recipient_email">Invia questo CV via email:</label>
+                            <label for="recipient_email">Invia i miei CV a:</label>
                             <div class="send-cv-input-group">
-                                <input type="email" name="recipient_email" id="recipient_email" placeholder="Email del destinatario" required>
+                                <input type="email" name="recipient_email" id="recipient_email" placeholder="Email del recruiter" required>
                                 <button type="submit" class="btn btn-secondary">Invia</button>
                             </div>
                         </form>

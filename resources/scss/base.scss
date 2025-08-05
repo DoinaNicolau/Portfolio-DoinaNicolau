@@ -27,3 +27,12 @@ h1, h2, h3 {
 *, *::before, *::after {
     box-sizing: border-box;
 }
+.alert-success {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba($neon-purple, 0.2);
+    border: 1px solid $neon-purple;
+    color: $text-light;
+    border-radius: 5px;
+    text-align: center;
+}

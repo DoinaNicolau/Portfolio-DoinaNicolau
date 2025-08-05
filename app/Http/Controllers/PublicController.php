@@ -5,43 +5,53 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailables\Attachment;
 use App\Mail\CvShareMail;
 
 class PublicController extends Controller
 {
     public function homepage() {
-    return view('welcome');
-}
+        return view('welcome');
+    }
 
   public function submitContact(Request $request)
     {
     
-        $data = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'message' => 'required|string',
-    ]);
+      $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'message' => 'required|string',
+        ]);
 
-  // Invia l'email
-        // Specifica a chi inviare l'email (es. il tuo indirizzo personale)
-        Mail::to('tua-email-personale@example.com')->send(new ContactFormMail($data));
+        Mail::to('la-tua-email-personale@esempio.com')->send(new ContactFormMail($data));
 
-        // Reindirizza alla homepage con un messaggio di successo
         return redirect('/#contact')->with('success', 'Messaggio inviato con successo!');
     }
 
+
     public function sendCv(Request $request)
-{
-    // Valida l'email del destinatario
-    $data = $request->validate([
-        'recipient_email' => 'required|email'
-    ]);
+    {
+        $validated = $request->validate(['recipient_email' => 'required|email']);
 
-    // Invia l'email con il CV in allegato
-    Mail::to($data['recipient_email'])->send(new CvShareMail());
+        $pathCvItaliano = public_path('media/CV_Doina_Nicolau_IT_Personalizzato_Circolare.pdf');
+        $pathCvInglese  = public_path('media/CV_Doina_Nicolau_EN_Simple.pdf');
 
-    // Reindirizza indietro con un messaggio di successo
-    return back()->with('success_cv', 'CV inviato con successo a ' . $data['recipient_email'] . '!');
-}
+        if (!file_exists($pathCvItaliano) || !file_exists($pathCvInglese)) {
+            return redirect()->back()->with('error_cv', 'Si è verificato un errore interno. Riprova più tardi.');
+        }
+        
+        $filesDaAllegare = [
+            'italiano' => $pathCvItaliano,
+            'inglese'  => $pathCvInglese
+        ];
 
+        try {
+            Mail::to($validated['recipient_email'])->send(new CvShareMail($filesDaAllegare, $validated));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Errore invio email CV: ' . $e->getMessage());
+            return redirect()->back()->with('error_cv', 'Non è stato possibile inviare l\'email.');
+        }
+
+        return redirect()->back()->with('success_cv', 'CV inviati con successo a ' . $validated['recipient_email'] . '!');
+    }
 }

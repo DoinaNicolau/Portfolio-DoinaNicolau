@@ -17,9 +17,14 @@ class CvShareMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+    public array $files;
+    public array $formData;
+
+    public function __construct(array $files, array $formData)
     {
-        //
+        $this->files = $files;
+        $this->formData = $formData;
     }
 
     /**
@@ -28,7 +33,8 @@ class CvShareMail extends Mailable
        public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'CV di Doina Nicolau',
+          
+            subject: 'CV di Doina Nicolau (IT/EN)', // Un oggetto più descrittivo
         );
     }
 
@@ -49,8 +55,19 @@ class CvShareMail extends Mailable
      */
     public function attachments(): array
     {
-        return [  Attachment::fromPath(public_path('media/CV-Doina-Nicolau-Creativo.pdf'))
-                ->as('CV-Doina-Nicolau.pdf')
-                ->withMime('application/pdf'),];
+        $attachments = [];
+
+        // Aggiungi gli allegati solo se i file sono stati passati
+        if (isset($this->files['italiano'])) {
+            $attachments[] = Attachment::fromPath($this->files['italiano'])
+                ->as('CV_Doina_Nicolau_IT.pdf');
+        }
+
+        if (isset($this->files['inglese'])) {
+            $attachments[] = Attachment::fromPath($this->files['inglese'])
+                ->as('CV_Doina_Nicolau_EN.pdf');
+        }
+
+        return $attachments;
     }
 }
