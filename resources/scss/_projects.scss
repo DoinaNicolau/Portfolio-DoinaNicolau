@@ -1,0 +1,78 @@
+.projects-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: lighten($dark-bg, 5%); // Un colore di sfondo leggermente diverso per staccare
+}
+
+.projects-grid {
+    display: grid;
+    // Crea colonne che sono al minimo 300px, ma si espandono per riempire lo spazio
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: $dark-bg;
+    border-radius: 8px;
+    overflow: hidden; // Nasconde le parti dell'immagine che escono
+    border: 1px solid lighten($dark-bg, 15%);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba($neon-pink, 0.2);
+        border-color: $neon-pink;
+    }
+}
+
+.project-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-card-content {
+    padding: 20px;
+    flex-grow: 1; // Fa sì che questa sezione si espanda per riempire lo spazio
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    color: $neon-pink;
+}
+
+.project-tags {
+    margin-top: auto; // Spinge i tag in fondo alla card!
+    padding-top: 15px;
+
+    .tag {
+        display: inline-block;
+        background-color: lighten($dark-bg, 10%);
+        color: $neon-purple;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.project-links {
+    padding-top: 15px;
+    
+    .btn-link {
+        color: $neon-blue;
+        text-decoration: none;
+        font-family: $font-display;
+        margin-right: 15px;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: $font-display; // Usiamo il font dei titoli
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; // Bordo trasparente di base
+}
+
+.btn-primary {
+    background-color: $neon-purple;
+    color: $dark-bg;
+
+    &:hover {
+        background-color: transparent;
+        color: $neon-purple;
+        border-color: $neon-purple;
+        transform: translateY(-3px); // Un piccolo effetto al passaggio del mouse
+        box-shadow: 0 5px 10px rgba($neon-purple, 0.3);
+    }
+}

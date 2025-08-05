@@ -1,0 +1,147 @@
+.background-spheres {
+    // Il contenitore è fisso, a schermo intero e sta DIETRO a tutto
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; // z-index negativo lo mette dietro al contenuto del body
+    overflow: hidden; // Nasconde le parti delle sfere che escono
+}
+
+.sphere {
+    position: absolute; // Posizionate rispetto al contenitore .background-spheres
+    border-radius: 50%;
+    
+    // Effetto "vetro smerigliato" che si vedrà attraverso il contenuto
+    backdrop-filter: blur(80px); 
+    
+    // Animazione: nome, durata, andamento, numero di ripetizioni, direzione
+    animation: float 20s infinite alternate;
+}
+
+// Definiamo stili diversi per ogni sfera
+.s1 {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: -10%;
+    background: radial-gradient(circle, $neon-pink, transparent 60%);
+    opacity: 0.4;
+    animation-duration: 25s; // Durata diversa per un movimento asincrono
+}
+
+.s2 {
+    width: 500px;
+    height: 500px;
+    bottom: -15%;
+    right: -15%;
+    background: radial-gradient(circle, $neon-blue, transparent 60%);
+    opacity: 0.3;
+    animation-duration: 30s;
+    animation-delay: -5s; // Parte con un ritardo negativo per non iniziare insieme
+}
+
+.s3 {
+    width: 350px;
+    height: 350px;
+    top: 40%;
+    right: 20%;
+    background: radial-gradient(circle, $neon-purple, transparent 60%);
+    opacity: 0.25;
+    animation-duration: 20s;
+}
+
+.s4 {
+    width: 250px;
+    height: 250px;
+    bottom: 30%;
+    left: 15%;
+    background: radial-gradient(circle, #ffaf94, transparent 70%); // Usiamo un colore diverso
+    opacity: 0.2;
+    animation-duration: 35s;
+    animation-delay: -10s;
+}
+
+// L'animazione KEYFRAMES che fa muovere le sfere
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        // Ogni sfera si muoverà in una direzione diversa
+        // Usiamo le CSS Custom Properties (variabili) per personalizzare il movimento
+        transform: translate(var(--tx, 100px), var(--ty, -150px)) scale(1.2);
+        opacity: 0.4;
+    }
+}
+
+// Personalizziamo la direzione dell'animazione per ogni sfera
+.s1 { --tx: 50px; --ty: 100px; }
+.s2 { --tx: -80px; --ty: -50px; }
+.s3 { --tx: 120px; --ty: 80px; }
+.s4 { --tx: -100px; --ty: 120px; }
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    
+    // Il trucco per il bordo gradiente:
+    // 1. Creiamo un background con il gradiente.
+    background: conic-gradient(from 180deg at 50% 50%, $neon-blue, $neon-purple, $neon-pink, $neon-blue);
+
+    // 2. Creiamo un "buco" al centro usando una maschera.
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+            
+    // Applichiamo una nuova animazione
+    animation: spin-float 30s infinite linear;
+}
+
+// Stili diversi per ogni cerchio
+.c1 {
+    width: 200px;
+    height: 200px;
+    top: 5%;
+    left: 20%;
+    animation-duration: 40s;
+}
+
+.c2 {
+    width: 600px;
+    height: 600px;
+    bottom: -20%;
+    right: 30%;
+    opacity: 0.5;
+    animation-duration: 60s;
+    animation-delay: -15s;
+}
+
+.c3 {
+    width: 300px;
+    height: 300px;
+    bottom: 10%;
+    left: -5%;
+    opacity: 0.7;
+    animation-duration: 50s;
+}
+
+
+// Nuova animazione KEYFRAMES per i cerchi
+@keyframes spin-float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        // Li facciamo muovere in una direzione e ruotare su se stessi
+        transform: translate(var(--tx, 80px), var(--ty, 120px)) rotate(360deg);
+    }
+}
+
+// Personalizziamo la direzione del movimento per ogni cerchio
+.c1 { --tx: -60px; --ty: 80px; }
+.c2 { --tx: 100px; --ty: -100px; }
+.c3 { --tx: 50px; --ty: -90px; }
+
+

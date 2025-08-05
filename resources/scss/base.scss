@@ -1,0 +1,29 @@
+// resources/scss/_base.scss
+
+body {
+    background-color: $dark-bg;
+    color: $text-light;
+    font-family: $font-body;
+    margin: 0;
+    line-height: 1.6; // Migliora la leggibilità
+}
+
+h1, h2, h3 {
+    font-family: $font-display;
+    color: white;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}

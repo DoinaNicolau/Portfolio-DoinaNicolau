@@ -1,0 +1,19 @@
+
+// 1. Importa le variabili, così saranno disponibili ovunque
+@import 'variables';
+
+// 2. Importa gli stili di base
+@import 'base';
+
+// 3. Importa gli stili del layout
+@import 'layout';
+@import 'hero';
+@import 'about';
+@import 'buttons';
+@import 'projects';
+@import 'header';
+@import 'contact';
+@import 'background-spheres';
+@import 'particles';
+@import 'skills';
+@import 'modal';

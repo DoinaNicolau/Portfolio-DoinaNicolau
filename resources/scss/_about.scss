@@ -1,0 +1,47 @@
+.about-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    // Un piccolo effetto neon al testo
+    text-shadow: 0 0 5px rgba($neon-purple, 0.7);
+}
+
+.about-content {
+    // Qui creiamo il layout a due colonne con Flexbox!
+    display: flex;
+    align-items: center; // Allinea verticalmente gli elementi
+    gap: 40px; // Spazio tra l'immagine e il testo
+}
+
+.about-image {
+    flex-basis: 300px; // L'immagine ha una base di 300px
+    flex-shrink: 0; // Impedisce all'immagine di rimpicciolirsi
+
+    img {
+        width: 100%;
+        border-radius: 50%; // La rende rotonda
+        border: 3px solid $neon-purple; // Un bordo neon
+        box-shadow: 0 0 15px rgba($neon-purple, 0.5);
+    }
+}
+
+.about-text {
+    p {
+        margin-bottom: 1.5em;
+        line-height: 1.7;
+        color: #ccc; // Un grigio più chiaro per una migliore leggibilità
+    }
+}
+
+// Per i dispositivi più piccoli, mettiamo tutto in una sola colonna
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; // Impila gli elementi verticalmente
+        text-align: center;
+    }
+}

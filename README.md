@@ -1,61 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portfolio Personale di Doina Nicolau
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <!-- Sostituisci questa immagine con uno screenshot del tuo sito quando sarà online, o usa un banner personalizzato -->
+  <img src="https://i.imgur.com/GZ0Qy3d.png" alt="Portfolio Banner" width="700"/>
 </p>
 
-## About Laravel
+Questo repository ospita il codice sorgente del mio portfolio personale, un'applicazione web single-page costruita per presentare le mie competenze, i miei progetti e la mia passione per lo sviluppo. L'intero progetto è stato sviluppato utilizzando **Laravel 12** per il backend e **SCSS/JavaScript** per un frontend moderno e reattivo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+L'applicazione non è solo una vetrina, ma una dimostrazione pratica delle mie capacità di creare soluzioni web complete, dalla progettazione dell'interfaccia alla logica di backend.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Features Principali
 
-## Learning Laravel
+*   **Design Moderno e Reattivo:** Interfaccia utente pulita e ispirata a stili "tech", completamente responsive per desktop, tablet e mobile.
+*   **Single-Page Experience:** Navigazione fluida tra le sezioni senza ricaricare la pagina, grazie a JavaScript e all'effetto "smooth scroll".
+*   **Form di Contatto Funzionante:** Un endpoint backend sicuro costruito con Laravel che valida l'input dell'utente e invia notifiche email.
+*   **Download CV:** Funzionalità integrata per permettere ai visitatori di scaricare facilmente il mio curriculum vitae.
+*   **Codice Organizzato:** Aderenza alle migliori pratiche di Laravel, con l'uso di Controller, Componenti Blade per la modularità e una struttura SCSS ben organizzata.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🛠️ Stack Tecnologico e Strumenti
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+*   **Backend:** Laravel 12 (con PHP 8.3)
+*   **Frontend:** Blade, SCSS (Sass), Vite, JavaScript (ES6)
+*   **Ambiente di Sviluppo Locale:** [ Laravel]
+*   **Servizi Esterni:**
+    *   **Mailtrap:** Utilizzato per il testing delle email in ambiente di sviluppo.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚦 Guida all'Installazione Locale
 
-### Premium Partners
+Per clonare ed eseguire questo progetto sul tuo computer, segui questi passaggi:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1.  **Clona il repository:**
+    ```bash
+    git clone https://github.com/TUO_USERNAME/NOME_REPOSITORY.git
+    cd NOME_REPOSITORY
+    ```
 
-## Contributing
+2.  **Installa le dipendenze di Composer e NPM:**
+    ```bash
+    composer install
+    npm install
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3.  **Configura il file di ambiente:**
+    ```bash
+    cp .env.example .env
+    ```
+    *Successivamente, genera la chiave dell'applicazione:*
+    ```bash
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+4.  **Configura le tue variabili d'ambiente:**
+    Apri il file `.env` e imposta le credenziali per il tuo database (`DB_*`) e per il tuo mailer (`MAIL_*`).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5.  **Avvia i server di sviluppo:**
+    *   In un terminale, avvia Vite per la compilazione degli asset:
+        ```bash
+        npm run dev
+        ```
+    *   In un secondo terminale, avvia il server di Laravel:
+        ```bash
+        php artisan serve
+        ```
 
-## Security Vulnerabilities
+Il sito sarà ora visibile su `http://127.0.0.1:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🏛️ Architettura e Decisioni di Progetto
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Una breve panoramica di come è organizzato il codice:
+
+*   **Routing (`routes/web.php`):** Contiene due rotte:
+    1.  `GET /`: Gestita da `PublicController@homepage`, mostra la pagina principale.
+    2.  `POST /contact`: Gestita da `PublicController@submitContact`, processa i dati del form.
+*   **Controller (`app/Http/Controllers/PublicController.php`):** Un unico controller per gestire tutta la logica pubblica del sito, inclusa la validazione del form e l'invocazione del Mailable.
+*   **Mail (`app/Mail/ContactFormMail.php`):** Una classe Mailable dedicata, che utilizza la sintassi moderna di Laravel per definire l'invio dell'email di notifica.
+*   **Viste (`resources/views`):**
+    *   `layouts/app.blade.php`: Il layout principale dell'applicazione, che sfrutta gli **slot** (`$slot`) per una maggiore pulizia e modularità.
+    *   `components/navbar.blade.php`: Il componente riutilizzabile per la barra di navigazione.
+    *   `welcome.blade.php`: La vista che contiene tutte le sezioni della single-page e che viene "avvolta" dal componente di layout.
+*   **Stili (`resources/scss`):** L'SCSS è suddiviso in "partials" per ogni componente o sezione (es. `_hero.scss`, `_projects.scss`, `_header.scss`), tutti gestiti e importati da `app.scss`.
+
+---
+
+## 📜 Licenza
+
+Questo progetto è un software open-source ma è inteso come portfolio personale. Sentiti libero di usarlo come ispirazione, ma ti chiedo gentilmente di non ripubblicarlo come tuo. Il codice del framework Laravel sottostante è licenziato sotto la [licenza MIT](https://opensource.org/licenses/MIT).

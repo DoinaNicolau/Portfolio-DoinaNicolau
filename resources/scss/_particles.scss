@@ -1,0 +1,96 @@
+.foreground-particles {
+    // Contenitore fisso, a schermo intero, ma questa volta SOPRA la maggior parte delle cose
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%; // Largo quanto lo schermo
+height: 1px;
+z-index: 10;
+opacity: 1;
+pointer-events: auto; /* Temporaneamente per test */
+-webkit-mask: none; /* Disabilita la maschera */
+mask: none;
+  pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: 0; 
+    border-radius: 50%;
+    
+    background: conic-gradient(from 90deg at 50% 50%, $neon-pink, $neon-purple, $neon-blue, #ffaf94, $neon-pink);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1px));
+            
+    // Applichiamo UNA SOLA animazione
+    animation: complex-bubble-float 15s infinite ease-in-out;
+    
+    opacity: 0;
+}
+
+// L'UNICA, NUOVA e COMPLESSA animazione KEYFRAMES
+@keyframes complex-bubble-float {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        transform: translate(calc(var(--sway, 20px) * 0.1), -10vh) scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(calc(var(--sway, 20px) * 0.25), -25vh);
+    }
+    50% {
+        transform: translate(calc(var(--sway, 20px) * 0.5 * -1), -50vh); // Inverte direzione
+    }
+    75% {
+        transform: translate(calc(var(--sway, 20px) * 0.75), -75vh);
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(var(--sway, 20px), -100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+// Le definizioni delle particelle ora hanno solo un valore per delay e duration
+.p1 {
+    width: 20px; height: 20px; left: 15%;
+    animation-delay: -2s;
+    animation-duration: 12s;
+    --sway: 30px;
+}
+.p2 {
+    width: 30px; height: 30px; left: 40%;
+    animation-delay: -5s;
+    animation-duration: 18s;
+    --sway: -40px;
+}
+.p3 {
+    width: 15px; height: 15px; left: 75%;
+    animation-delay: -1s;
+    animation-duration: 10s;
+    --sway: 25px;
+}
+.p4 {
+    width: 25px; height: 25px; left: 90%;
+    animation-delay: -8s;
+    animation-duration: 15s;
+    --sway: -35px;
+}
+.p5 {
+    width: 10px; height: 10px; left: 55%;
+    animation-delay: -12s;
+    animation-duration: 20s;
+    --sway: 50px;
+}
+.p6 {
+    width: 35px; height: 35px; left: 5%;
+    animation-delay: -10s;
+    animation-duration: 13s;
+    --sway: -20px;
+}

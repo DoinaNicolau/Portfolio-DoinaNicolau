@@ -1,0 +1,45 @@
+// resources/scss/_skills.scss
+.skills-section {
+    padding: 80px 0;
+    background-color: lighten($dark-bg, 5%);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-category {
+    background-color: $dark-bg;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid lighten($dark-bg, 15%);
+
+    h3 {
+        font-family: $font-display;
+        color: $neon-pink;
+        margin-top: 0;
+        border-bottom: 1px solid lighten($dark-bg, 20%);
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 8px 0;
+            color: #ccc;
+            
+            // Aggiungiamo un'icona "check" per un tocco visivo
+            &::before {
+                content: '✓';
+                color: $neon-purple;
+                margin-right: 10px;
+            }
+        }
+    }
+}
